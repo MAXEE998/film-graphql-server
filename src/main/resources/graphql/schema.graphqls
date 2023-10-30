@@ -1,0 +1,24 @@
+type Film {
+    id: ID!
+    title: String!
+    productionCompany: String
+    director: String
+    genre: String
+    cast: [Actor]
+}
+
+type Actor {
+    id: ID!
+    name: String
+    filmography: [Film]
+}
+
+type Query {
+    filmById(id: ID!): Film
+    filmsByTitle(title: String!): [Film]
+    filmsByGenreAndDirector(genre: String!, director: String!): [Film]
+    findByCastNameIn(actors: [String]!): [Film]
+    actorById(id: ID!): Actor
+    allFilms: [Film]
+    allActors: [Actor]
+}
